@@ -42,6 +42,7 @@ const App: FC<Props> = ({ params, model }) => {
             height: '100vh',
             alignItems: 'center',
             justifyContent: 'center',
+            overflow: 'hidden',
          }}>
          {params.map((el) => (
             <label style={{ display: 'flex', columnGap: '10px' }} key={el.id}>
