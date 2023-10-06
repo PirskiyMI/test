@@ -36,34 +36,41 @@ const App: FC<Props> = ({ params, model }) => {
       <div
          style={{
             display: 'flex',
-            flexDirection: 'column',
-            rowGap: '16px',
             width: '100vw',
             height: '100vh',
             alignItems: 'center',
             justifyContent: 'center',
-            overflow: 'hidden',
          }}>
-         {params.map((el) => (
-            <label style={{ display: 'flex', columnGap: '10px' }} key={el.id}>
-               <span>{el.name}</span>
-               {param.map((value) =>
-                  value.paramId === el.id ? (
-                     <input
-                        key={value.paramId}
-                        value={value.value}
-                        onChange={(e) =>
-                           setParam((prev) =>
-                              prev.map((item) =>
-                                 item.paramId === el.id ? { ...item, value: e.target.value } : item,
-                              ),
-                           )
-                        }
-                     />
-                  ) : null,
-               )}
-            </label>
-         ))}
+         <div
+            style={{
+               display: 'flex',
+               flexDirection: 'column',
+               rowGap: '16px',
+               alignItems: 'flex-end',
+            }}>
+            {params.map((el) => (
+               <label style={{ display: 'flex', columnGap: '10px' }} key={el.id}>
+                  <span>{el.name}</span>
+                  {param.map((value) =>
+                     value.paramId === el.id ? (
+                        <input
+                           key={value.paramId}
+                           value={value.value}
+                           onChange={(e) =>
+                              setParam((prev) =>
+                                 prev.map((item) =>
+                                    item.paramId === el.id
+                                       ? { ...item, value: e.target.value }
+                                       : item,
+                                 ),
+                              )
+                           }
+                        />
+                     ) : null,
+                  )}
+               </label>
+            ))}
+         </div>
       </div>
    );
 };
